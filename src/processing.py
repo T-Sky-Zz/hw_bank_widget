@@ -17,13 +17,13 @@ if __name__ == "__main__":
     print(filter_by_state(transactions, state="EXECUTED"))
 
 
-def sort_by_date(transactions: list[dict], reverse: bool = True) -> list[dict]:
+def sort_by_date(transactions: list[dict], reverse: str = "True") -> list[dict]:
     """
     Функция принимает список словарей и необязательный параметр, задающий порядок сортировки
-    (по умолчанию — убывание (reverse: bool = True)).
+    (по умолчанию — убывание (reverse='True')).
     Функция должна возвращать новый список, отсортированный по дате (date).
     """
-    if reverse:
+    if reverse == "True":
         sorted_transactions = sorted(transactions, key=lambda transaction: transaction["date"], reverse=True)
     else:
         sorted_transactions = sorted(transactions, key=lambda transaction: transaction["date"])
