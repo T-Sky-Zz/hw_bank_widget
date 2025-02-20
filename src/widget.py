@@ -35,7 +35,6 @@ def get_date(input_date: str) -> str:
         if datetime.strptime(input_date, "%Y-%m-%dT%H:%M:%S.%f"):
             output_date = datetime.strptime(input_date, "%Y-%m-%dT%H:%M:%S.%f")
             return output_date.strftime("%d.%m.%Y")
-        raise ValueError("Неверный формат даты")
     raise TypeError
 
 
