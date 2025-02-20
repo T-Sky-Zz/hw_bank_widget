@@ -44,11 +44,11 @@ def test_filter_by_state_canceled(transactions_input_list: list[dict], transacti
 def test_filter_by_state_incorrect() -> None:
 
     with pytest.raises(TypeError):
-        filter_by_state("zdfgbsfy")
+        filter_by_state("zdfgbsfy")  # type: ignore
     with pytest.raises(TypeError):
-        filter_by_state([""])
+        filter_by_state([""])  # type: ignore
     with pytest.raises(TypeError):
-        filter_by_state()
+        filter_by_state()  # type: ignore
 
 
 @pytest.fixture
