@@ -24,11 +24,11 @@ def test_get_mask_account_card_incorrect() -> None:
     with pytest.raises(ValueError):
         mask_account_card("1234 56789012345678915687")
     with pytest.raises(TypeError):
-        mask_account_card(123456789012345678915687)
+        mask_account_card(123456789012345678915687)  # type: ignore
     with pytest.raises(ValueError):
         mask_account_card("")
     with pytest.raises(TypeError):
-        mask_account_card()
+        mask_account_card()  # type: ignore
 
 
 @pytest.mark.parametrize("date, expected", [("2018-09-12T21:27:25.241689", "12.09.2018"),
@@ -41,4 +41,4 @@ def test_get_date_incorrect() -> None:
     with pytest.raises(ValueError):
         get_date("дата и время")
     with pytest.raises(TypeError):
-        get_date(123456)
+        get_date(123456)  # type: ignore
