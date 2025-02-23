@@ -1,5 +1,7 @@
+from typing import Dict, Iterator, Union
 
-def filter_by_currency(transactions_list, currency):
+
+def filter_by_currency(transactions_list: list[dict], currency: str) -> Iterator:
     """Функция должна возвращать итератор, который поочередно выдает транзакции,
 где валюта операции соответствует заданной (например, USD)"""
 
@@ -9,6 +11,20 @@ def filter_by_currency(transactions_list, currency):
         return "Транзакция не найдена"
     for item_list in filter(lambda x: x["operationAmount"]["currency"]["code"] == currency, transactions_list):
         yield item_list
+
+
+def transaction_descriptions(transactions_list):
+    """ генератор, который принимает список словарей с транзакциями и
+    возвращает описание каждой операции по очереди."""
+
+    if not transactions_list:
+        return "Список транзакций пуст"
+    for item_list in transactions_list:
+        for item in item_list:
+            if item == "description":
+                # print(item_list["description"])
+                yield item_list["description"]
+
 
 
 if __name__ == "__main__":
@@ -89,12 +105,22 @@ if __name__ == "__main__":
             "to": "Счет 14211924144426031657"
         }
     ]
-
+    # ============
     # usd_transactions = filter_by_currency(transactions, "sdf")  # StopIteration: Транзакция не найдена
     # usd_transactions = filter_by_currency([], "USD")  # StopIteration: Список транзакций пуст
-    usd_transactions = filter_by_currency(transactions, "USD")
+    # usd_transactions = filter_by_currency(transactions, "USD")
+    #
+    # for _ in range(2):
+    #     print(next(usd_transactions))
+    # ============
 
-    for _ in range(2):
-        print(next(usd_transactions))
+    # descriptions = transaction_descriptions(transactions)
+    # for _ in range(5):
+    #     print(next(descriptions))
 
-
+# >>> Перевод организации
+#     Перевод со счета на счет
+#     Перевод со счета на счет
+#     Перевод с карты на карту
+#     Перевод организации
+# ============
