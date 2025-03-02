@@ -5,7 +5,7 @@ from src.decorators import log
 @pytest.mark.parametrize("expected_start, expected_end",
                          [("Начало работы функции my_func\n\n", "my_func OK\n\n")])
 def test_log_console_ok(capsys: pytest.CaptureFixture[str], expected_start: str, expected_end: str) -> None:
-
+    """Проверка работы декоратора при выводе данных в консоль. Работает верно"""
     @log()
     def my_func(x: int, y: int) -> int:
         return x + y
@@ -20,7 +20,7 @@ def test_log_console_ok(capsys: pytest.CaptureFixture[str], expected_start: str,
 @pytest.mark.parametrize("expected_start, expected_end",
                          [("Начало работы функции my_func\n\n", "my_func error: TypeError Inputs: (1, '2'), {}\n\n")])
 def test_log_console_error(capsys: pytest.CaptureFixture[str], expected_start: str, expected_end: str) -> None:
-
+    """Проверка работы декоратора при выводе данных в консоль. Ошибка"""
     @log()
     def my_func(x: int, y: int) -> int:
         return x + y
@@ -36,7 +36,7 @@ def test_log_console_error(capsys: pytest.CaptureFixture[str], expected_start: s
 @pytest.mark.parametrize("expected_start, expected_end",
                          [("Начало работы функции my_func\n", "my_func OK\n")])
 def test_log_file_ok(capsys: pytest.CaptureFixture[str], expected_start: str, expected_end: str) -> None:
-
+    """Проверка работы декоратора при выводе данных в файл. Работает верно"""
     @log(filename="mylog.txt")
     def my_func(x: int, y: int) -> int:
         return x + y
@@ -54,7 +54,7 @@ def test_log_file_ok(capsys: pytest.CaptureFixture[str], expected_start: str, ex
 @pytest.mark.parametrize("expected_start, expected_end",
                          [("Начало работы функции my_func\n", "my_func error: TypeError Inputs: (1, '2'), {}\n")])
 def test_log_file_error(capsys: pytest.CaptureFixture[str], expected_start: str, expected_end: str) -> None:
-
+    """Проверка работы декоратора при выводе данных в файл. Ошибка"""
     @log(filename="mylog.txt")
     def my_func(x: int, y: int) -> int:
         return x + y
