@@ -115,8 +115,8 @@ def transaction_descriptions(transactions_list: list[dict]) -> Iterator:
 
 def card_number_generator(start: int, stop: int) -> Iterator:
     """генератор, который выдает номера банковских карт в формате XXXX XXXX XXXX XXXX,
-        где X — цифра номера карты. Генератор может сгенерировать номера карт в заданном диапазоне
-        от 0000 0000 0000 0001 до 9999 9999 9999 9999"""
+    где X — цифра номера карты. Генератор может сгенерировать номера карт в заданном диапазоне
+    от 0000 0000 0000 0001 до 9999 9999 9999 9999"""
 
     if start >= stop or start == 0 or len(str(start)) > 16 or len(str(stop)) > 16:
         raise ValueError("Введен неверный диапазон")
