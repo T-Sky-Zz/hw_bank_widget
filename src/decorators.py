@@ -4,6 +4,7 @@ from typing import Any, Callable
 def log(filename: str | None = None) -> Callable:
     """Декоратор автоматически логирует начало и конец выполнения функции,
     а также ее результаты или возникшие ошибки."""
+
     def log_message(message: str) -> Any:
         if not filename:
             print(message)
@@ -21,10 +22,12 @@ def log(filename: str | None = None) -> Callable:
                 log_message(message)
                 return result
             except Exception as e:
-                message = (f"{func.__name__} error: {type(e).__name__} Inputs: {args}, {kwargs}\n")
+                message = f"{func.__name__} error: {type(e).__name__} Inputs: {args}, {kwargs}\n"
                 log_message(message)
                 raise e
+
         return wrapper
+
     return my_decorator
 
 
