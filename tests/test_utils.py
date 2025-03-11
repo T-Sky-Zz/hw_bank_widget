@@ -48,7 +48,7 @@ def test_create_list_from_j_file_file_not_found(mock_open_file: Any) -> None:
 
 @pytest.fixture
 def transaction_dict_rub() -> dict:
-    return {"operationAmount": {"amount": "31957.58", "currency": {"name": "руб.", "code": "RUB"}}}
+    return {"amount": "31957.58", "currency_name": "руб.", "currency_code": "RUB"}
 
 
 def test_get_conversion_amount_rub(transaction_dict_rub: dict) -> None:
@@ -59,9 +59,9 @@ def test_get_conversion_amount_rub(transaction_dict_rub: dict) -> None:
 @pytest.mark.parametrize(
     "transaction_dict, expected",
     [
-        ({"operationAmount": {"amount": "8221.37", "currency": {"name": "USD", "code": "USD"}}}, 1.00),
-        ({"operationAmount": {"amount": "7531.37", "currency": {"name": "EUR", "code": "EUR"}}}, 1.00),
-        ({"operationAmount": {"amount": "2182.37", "currency": {"name": "CNY", "code": "CNY"}}}, 0.00),
+        ({"amount": "8221.37", "currency_name": "USD", "currency_code": "USD"}, 1.00),
+        ({"amount": "7531.37", "currency_name": "EUR", "currency_code": "EUR"}, 1.00),
+        ({"amount": "2182.37", "currency_name": "CNY", "currency_code": "CNY"}, 0.00),
     ],
 )
 @patch("src.utils.convert_currency")
